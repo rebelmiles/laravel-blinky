@@ -49,7 +49,7 @@ class BlinkyCompilerEngine extends CompilerEngine
             // get the styles
             $files = $this->files;
             $styles = $stylesheetsHrefs->map(function ($stylesheet) use ($files) {
-                $path = resource_path('assets/css/' . $stylesheet);
+                $path = resource_path( env('INKY_CSS_PATH', 'public/css/') . $stylesheet);
                 return $files->get($path);
             })->implode("\n\n");
             $inliner = new CssToInlineStyles();
